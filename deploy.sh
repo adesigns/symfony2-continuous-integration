@@ -78,6 +78,11 @@ cd $CUR_RLS_DIR && php app/console doctrine:migrations:migrate --no-interaction
 echo "##### Creating new release symlink..."
 ln -sfn $CUR_RLS_DIR $SYMLINK_DIR
 
+echo "######################################"
+echo "##### DEPLOYMENT COMPLETE!            "
+echo "##### Cleaning up old releases ...    "
+echo "######################################"
+
 echo $TS|cat - $CWD/deploy_history.txt > $CWD/deploy_hist.tmp && mv $CWD/deploy_hist.tmp $CWD/deploy_history.txt
 
 DEPLOY_COUNTER=0
@@ -95,7 +100,5 @@ do
 done < $CWD/deploy_history.txt
 
 echo "######################################"
-echo "##### DEPLOYMENT COMPLETE!            "
+echo "##### CLEANUP COMPLETE!               "
 echo "######################################"
-
-
